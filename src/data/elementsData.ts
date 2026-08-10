@@ -48,7 +48,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: He-4.",
     wikiUrl: "https://it.wikipedia.org/wiki/Elio",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=He",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Helium-glow.jpg/250px-Helium-glow.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   },
   {
     number: 3,
