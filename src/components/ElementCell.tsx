@@ -38,30 +38,26 @@ const ElementCell: FC<ElementCellProps> = ({
   if (placeholder) {
     const label = placeholder === "lanthanide" ? "*" : "**";
     return (
-      <div
-        className="aspect-square border-2 rounded-lg flex items-center justify-center text-white text-sm font-bold select-none backdrop-blur-sm transition-all"
-        style={{
-          backgroundColor: color + "55",
-          borderColor: color,
-          boxShadow: "0 0 10px 1px " + color + "80, inset 0 0 12px " + color + "40",
-        }}
-      >
+      <div className="aspect-square border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/40 text-sm font-semibold select-none">
         {label}
       </div>
     );
   }
+
+  const isCategoryMode = mode === "category";
 
   return (
     <button
       type="button"
       onClick={() => onSelect(element)}
       className={
-        "group relative aspect-square border-2 rounded-lg p-1 transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 " +
+        "group relative aspect-square rounded-lg p-1 transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 " +
+        (isCategoryMode ? "border-transparent " : "border-2 ") +
         (dimmed ? "opacity-20 blur-[0.5px] scale-95" : "opacity-100 scale-100 hover:scale-[1.06] hover:z-10")
       }
       style={{
         transformOrigin: "center",
-        borderColor: color,
+        borderColor: isCategoryMode ? "transparent" : color,
       }}
       title={element.name + " (" + element.symbol + ")"}
     >
