@@ -1,7 +1,7 @@
-import React, { useMemo } from "react";
+import { useMemo, memo, type FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRadiation } from "@fortawesome/free-solid-svg-icons";
-import type { ElementData, VisualizationMode } from "../types/element";
+import { type ElementData, type VisualizationMode } from "../types/element";
 import { getElementColor, getNumericValue } from "../utils/colors";
 
 interface ElementCellProps {
@@ -25,7 +25,7 @@ function formatBottomValue(el: ElementData, mode: VisualizationMode): string {
   return String(value);
 }
 
-const ElementCell: React.FC<ElementCellProps> = ({
+const ElementCell: FC<ElementCellProps> = ({
   element,
   mode,
   range,
@@ -38,7 +38,14 @@ const ElementCell: React.FC<ElementCellProps> = ({
   if (placeholder) {
     const label = placeholder === "lanthanide" ? "*" : "**";
     return (
-      <div className="aspect-square border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/40 text-sm font-semibold select-none">
+      <div
+        className="aspect-square border-2 rounded-lg flex items-center justify-center text-white text-sm font-bold select-none backdrop-blur-sm transition-all"
+        style={{
+          backgroundColor: color + "55",
+          borderColor: color,
+          boxShadow: "0 0 10px 1px " + color + "80, inset 0 0 12px " + color + "40",
+        }}
+      >
         {label}
       </div>
     );
@@ -48,19 +55,22 @@ const ElementCell: React.FC<ElementCellProps> = ({
     <button
       type="button"
       onClick={() => onSelect(element)}
-      className={`group relative aspect-square border-2 border-white rounded-lg p-1 transition-all duration-300 ease-out
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300
-        ${dimmed ? "opacity-20 blur-[0.5px] scale-95" : "opacity-100 scale-100 hover:scale-[1.06] hover:z-10"}
-      `}
-      style={{ transformOrigin: "center" }}
-      title={`${element.name} (${element.symbol})`}
+      className={
+        "group relative aspect-square border-2 rounded-lg p-1 transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 " +
+        (dimmed ? "opacity-20 blur-[0.5px] scale-95" : "opacity-100 scale-100 hover:scale-[1.06] hover:z-10")
+      }
+      style={{
+        transformOrigin: "center",
+        borderColor: color,
+      }}
+      title={element.name + " (" + element.symbol + ")"}
     >
       <div
         className="relative h-full w-full rounded-md flex flex-col justify-between overflow-hidden backdrop-blur-sm px-1 py-0.5"
         style={{
-          backgroundColor: `${color}55`,
-          boxShadow: dimmed ? "none" : `0 0 10px 1px ${color}80, inset 0 0 12px ${color}40`,
-          border: `1px solid ${color}aa`,
+          backgroundColor: color + "55",
+          boxShadow: dimmed ? "none" : "0 0 10px 1px " + color + "80, inset 0 0 12px " + color + "40",
+          border: "1px solid " + color + "aa",
         }}
       >
         <div className="flex items-start justify-between text-[10px] sm:text-xs leading-none">
@@ -86,4 +96,4 @@ const ElementCell: React.FC<ElementCellProps> = ({
   );
 };
 
-export default React.memo(ElementCell);
+export default memo(ElementCell);

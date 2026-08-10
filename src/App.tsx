@@ -52,14 +52,14 @@ const App: FC = () => {
             </p>
           </div>
 
-          {/* Pulsante Quiz Principale nell'Header */}
+          {/* Pulsante Quiz nell'Header */}
           <button
             type="button"
             onClick={() => setIsQuizOpen(true)}
-            className="self-start sm:self-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-sky-500 via-indigo-600 to-fuchsia-600 text-white font-extrabold text-base shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/60 hover:brightness-110 active:scale-95 transition-all flex items-center gap-3 border border-white/20 animate-pulse"
+            className="self-start sm:self-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-500 via-indigo-600 to-fuchsia-600 text-white font-extrabold text-sm shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/60 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 border border-white/20"
           >
-            <FontAwesomeIcon icon={faGraduationCap} className="text-xl text-sky-200" />
-            <span>{"Gioca al Quiz"}</span>
+            <FontAwesomeIcon icon={faGraduationCap} className="text-lg text-sky-200" />
+            <span>{"Modalità Quiz"}</span>
           </button>
         </div>
       </header>
@@ -67,32 +67,6 @@ const App: FC = () => {
       {/* Main Content */}
       <main className="px-4 sm:px-8 pb-16">
         <div className="max-w-[1400px] mx-auto flex flex-col gap-5">
-          {/* Banner d'invito al Quiz in Homepage */}
-          <div className="rounded-2xl border border-sky-400/30 bg-gradient-to-r from-sky-900/40 via-indigo-900/30 to-purple-900/40 backdrop-blur-md p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
-            <div className="flex items-center gap-3.5">
-              <div className="p-3 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 shadow-md">
-                <FontAwesomeIcon icon={faGamepad} className="text-2xl text-white" />
-              </div>
-              <div>
-                <h2 className="text-base font-extrabold text-white flex items-center gap-2">
-                  <span>{"Vuoi mettere alla prova la tua conoscenza chimica?"}</span>
-                </h2>
-                <p className="text-xs text-slate-300 mt-0.5">
-                  {"Affronta la Modalità Quiz con sfide a tempo, streak e livelli di difficoltà."}
-                </p>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setIsQuizOpen(true)}
-              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2 whitespace-nowrap"
-            >
-              <FontAwesomeIcon icon={faTrophy} className="text-amber-300" />
-              <span>{"Avvia Quiz Ora"}</span>
-            </button>
-          </div>
-
           {/* Barra di ricerca e filtri */}
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-4 flex flex-col gap-4">
             <SearchBar
@@ -112,6 +86,32 @@ const App: FC = () => {
           {/* Legenda */}
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-4">
             <Legend elements={elementsData} mode={mode} />
+          </div>
+
+          {/* Banner d'invito al Quiz posizionato in basso */}
+          <div className="rounded-2xl border border-sky-400/30 bg-gradient-to-r from-sky-900/40 via-indigo-900/30 to-purple-900/40 backdrop-blur-md p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+            <div className="flex items-center gap-3.5">
+              <div className="p-3.5 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 shadow-md">
+                <FontAwesomeIcon icon={faGamepad} className="text-2xl text-white" />
+              </div>
+              <div>
+                <h2 className="text-base font-extrabold text-white flex items-center gap-2">
+                  <span>{"Vuoi mettere alla prova la tua conoscenza chimica?"}</span>
+                </h2>
+                <p className="text-xs text-slate-300 mt-0.5">
+                  {"Affronta la Modalità Quiz con sfide a tempo, streak e livelli di difficoltà."}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsQuizOpen(true)}
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2.5 whitespace-nowrap"
+            >
+              <FontAwesomeIcon icon={faTrophy} className="text-amber-300" />
+              <span>{"Avvia Quiz Ora"}</span>
+            </button>
           </div>
         </div>
       </main>

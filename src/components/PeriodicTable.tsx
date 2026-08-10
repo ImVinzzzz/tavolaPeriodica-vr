@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import type { ElementData, VisualizationMode } from "../types/element";
+import { useMemo, Fragment, type FC } from "react";
+import { type ElementData, type VisualizationMode } from "../types/element";
 import ElementCell from "./ElementCell";
 import { computeRange } from "../utils/colors";
 
@@ -17,30 +17,30 @@ const ACTINIDE_RANGE = [89, 103];
 
 const gridTemplateColumns = "2.25rem repeat(18, minmax(2.25rem, 1fr)) 2.25rem";
 
-const PeriodicTable: React.FC<PeriodicTableProps> = ({ elements, mode, matches, onSelect }) => {
+const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSelect }) => {
   const range = useMemo(() => computeRange(elements, mode), [elements, mode]);
 
   const { byPosition, lanthanides, actinides } = useMemo(() => {
-    const byPosition = new Map<string, ElementData>();
-    const lanthanides: ElementData[] = [];
-    const actinides: ElementData[] = [];
+    const byPositionMap = new Map<string, ElementData>();
+    const lanthanidesList: ElementData[] = [];
+    const actinidesList: ElementData[] = [];
 
     for (const el of elements) {
       const inLa = el.number >= LANTHANIDE_RANGE[0] && el.number <= LANTHANIDE_RANGE[1];
       const inAc = el.number >= ACTINIDE_RANGE[0] && el.number <= ACTINIDE_RANGE[1];
       if (inLa) {
-        lanthanides.push(el);
+        lanthanidesList.push(el);
         continue;
       }
       if (inAc) {
-        actinides.push(el);
+        actinidesList.push(el);
         continue;
       }
-      byPosition.set(`${el.period}-${el.group}`, el);
+      byPositionMap.set(el.period + "-" + el.group, el);
     }
-    lanthanides.sort((a, b) => a.number - b.number);
-    actinides.sort((a, b) => a.number - b.number);
-    return { byPosition, lanthanides, actinides };
+    lanthanidesList.sort((a, b) => a.number - b.number);
+    actinidesList.sort((a, b) => a.number - b.number);
+    return { byPosition: byPositionMap, lanthanides: lanthanidesList, actinides: actinidesList };
   }, [elements]);
 
   return (
@@ -52,7 +52,7 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ elements, mode, matches, 
           <div />
           {GROUPS.map((g) => (
             <div
-              key={`g-${g}`}
+              key={"g-" + g}
               className="text-center text-[10px] sm:text-xs text-sky-300/80 font-semibold pb-1"
             >
               {g}
@@ -61,23 +61,43 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ elements, mode, matches, 
           <div />
 
           {PERIODS.map((p) => (
-            <React.Fragment key={`row-${p}`}>
+            <Fragment key={"row-" + p}>
               <div className="flex items-center justify-center text-[10px] sm:text-xs text-sky-300/80 font-semibold">
                 {p}
               </div>
 
               {GROUPS.map((g) => {
                 if (p === 6 && g === 3) {
-                  return <ElementCell key={`${p}-${g}`} element={lanthanides[0]} placeholder="lanthanide" mode={mode} range={range} dimmed={false} onSelect={onSelect} />;
+                  return (
+                    <ElementCell
+                      key={p + "-" + g}
+                      element={lanthanides[0]}
+                      placeholder="lanthanide"
+                      mode={mode}
+                      range={range}
+                      dimmed={false}
+                      onSelect={onSelect}
+                    />
+                  );
                 }
                 if (p === 7 && g === 3) {
-                  return <ElementCell key={`${p}-${g}`} element={actinides[0]} placeholder="actinide" mode={mode} range={range} dimmed={false} onSelect={onSelect} />;
+                  return (
+                    <ElementCell
+                      key={p + "-" + g}
+                      element={actinides[0]}
+                      placeholder="actinide"
+                      mode={mode}
+                      range={range}
+                      dimmed={false}
+                      onSelect={onSelect}
+                    />
+                  );
                 }
-                const el = byPosition.get(`${p}-${g}`);
-                if (!el) return <div key={`${p}-${g}`} />;
+                const el = byPosition.get(p + "-" + g);
+                if (!el) return <div key={p + "-" + g} />;
                 return (
                   <ElementCell
-                    key={`${p}-${g}`}
+                    key={p + "-" + g}
                     element={el}
                     mode={mode}
                     range={range}
@@ -90,16 +110,16 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ elements, mode, matches, 
               <div className="flex items-center justify-center text-[10px] sm:text-xs text-sky-300/80 font-semibold">
                 {p}
               </div>
-            </React.Fragment>
+            </Fragment>
           ))}
         </div>
 
-        {/* Serie staccate: Lantanoidi e Attinoidi */}
+        {/* Serie staccate: Lantanoidi e Attinoidi allineate al Gruppo 3 */}
         <div className="mt-3 grid gap-1" style={{ gridTemplateColumns }}>
           <div className="flex items-center justify-center text-[10px] sm:text-xs text-pink-300/80 font-semibold">
-            *
+            {"*"}
           </div>
-          <div className="col-span-1" />
+          <div className="col-span-2" />
           {lanthanides.map((el) => (
             <ElementCell
               key={el.number}
@@ -110,14 +130,14 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ elements, mode, matches, 
               onSelect={onSelect}
             />
           ))}
-          <div className="col-span-2" />
+          <div className="col-span-1" />
         </div>
 
         <div className="mt-1 grid gap-1" style={{ gridTemplateColumns }}>
           <div className="flex items-center justify-center text-[10px] sm:text-xs text-pink-400/80 font-semibold">
-            **
+            {"**"}
           </div>
-          <div className="col-span-1" />
+          <div className="col-span-2" />
           {actinides.map((el) => (
             <ElementCell
               key={el.number}
@@ -128,7 +148,7 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ elements, mode, matches, 
               onSelect={onSelect}
             />
           ))}
-          <div className="col-span-2" />
+          <div className="col-span-1" />
         </div>
       </div>
     </div>
