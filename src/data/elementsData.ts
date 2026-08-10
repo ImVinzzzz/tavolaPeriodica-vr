@@ -27,7 +27,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: H-1.",
     wikiUrl: "https://it.wikipedia.org/wiki/Idrogeno",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=H",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Hydrogenglow.jpg/250px-Hydrogenglow.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   },
   {
     number: 2,
