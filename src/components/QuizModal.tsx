@@ -135,8 +135,7 @@ const QuizModal: FC<QuizModalProps> = ({ isOpen, onClose, elements }) => {
     (
       nextIdx: number,
       qList: ElementData[],
-      currentStats: QuizStats,
-      wrongs: WrongAnswerRecord[]
+      currentStats: QuizStats
     ) => {
       if (nextIdx >= qList.length) {
         // Fine del Quiz
@@ -222,7 +221,7 @@ const QuizModal: FC<QuizModalProps> = ({ isOpen, onClose, elements }) => {
 
       // Ritardo prima di passare alla domanda successiva
       setTimeout(() => {
-        nextQuestion(currentIndex + 1, questionList, updatedStats, newWrongs);
+        nextQuestion(currentIndex + 1, questionList, updatedStats);
       }, 1300);
     },
     [isAnswered, questionList, currentIndex, mode, stats, wrongAnswers, useTimer, timeLeft, nextQuestion]
