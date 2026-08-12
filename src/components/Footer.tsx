@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFlask, faShieldHalved, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faFlask, faShieldHalved, faUpRightFromSquare, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Footer: React.FC = () => {
   return (
@@ -16,47 +16,58 @@ const Footer: React.FC = () => {
             <p className="leading-relaxed text-white/70">
               {"I dati chimico-fisici e le proprietà atomiche degli elementi sono tratti da fonti scientifiche ufficiali:"}
             </p>
-            <ul className="list-disc list-inside space-y-1 text-white/60 ml-1">
-              <li>
-                <strong className="text-white/80">{"IUPAC / CIAAW"}</strong>
-                {": Pesi atomici standard convenzionali e mono-isotopici ("}
-                <a
-                  href="https://www.ciaaw.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-300 hover:underline inline-flex items-center gap-1"
-                >
-                  ciaaw.org <FontAwesomeIcon icon={faUpRightFromSquare} className="text-[9px]" />
-                </a>
-                {")."}
-              </li>
-              <li>
-                <strong className="text-white/80">{"NIST ASD"}</strong>
-                {": Energie di ionizzazione e spettri atomici ("}
-                <a
-                  href="https://www.nist.gov/pml/atomic-spectra-database"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-300 hover:underline inline-flex items-center gap-1"
-                >
-                  physics.nist.gov <FontAwesomeIcon icon={faUpRightFromSquare} className="text-[9px]" />
-                </a>
-                {")."}
-              </li>
-              <li>
-                <strong className="text-white/80">{"Immagini & Approfondimenti"}</strong>
-                {": Le immagini dimostrative e i collegamenti presenti nelle schede degli elementi sono tratti da "}
-                <a
-                  href="https://it.wikipedia.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-300 hover:underline inline-flex items-center gap-1"
-                >
-                  it.wikipedia.org <FontAwesomeIcon icon={faUpRightFromSquare} className="text-[9px]" />
-                </a>
-                {"."}
-              </li>
-            </ul>
+            <div className="flex flex-col gap-2 mt-1 text-white/60">
+              <div className="flex items-start gap-2">
+                <FontAwesomeIcon icon={faAngleRight} className="text-sky-400 text-[10px] mt-1 shrink-0" />
+                <div>
+                  <strong className="text-white/80">{"IUPAC / CIAAW"}</strong>
+                  {": Pesi atomici standard convenzionali e mono-isotopici ("}
+                  <a
+                    href="https://www.ciaaw.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-300 hover:underline inline-flex items-center gap-1"
+                  >
+                    ciaaw.org <FontAwesomeIcon icon={faUpRightFromSquare} className="text-[9px]" />
+                  </a>
+                  {")."}
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2">
+                <FontAwesomeIcon icon={faAngleRight} className="text-sky-400 text-[10px] mt-1 shrink-0" />
+                <div>
+                  <strong className="text-white/80">{"NIST ASD"}</strong>
+                  {": Energie di ionizzazione e spettri atomici ("}
+                  <a
+                    href="https://www.nist.gov/pml/atomic-spectra-database"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-300 hover:underline inline-flex items-center gap-1"
+                  >
+                    physics.nist.gov <FontAwesomeIcon icon={faUpRightFromSquare} className="text-[9px]" />
+                  </a>
+                  {")."}
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2">
+                <FontAwesomeIcon icon={faAngleRight} className="text-sky-400 text-[10px] mt-1 shrink-0" />
+                <div>
+                  <strong className="text-white/80">{"Immagini & Approfondimenti"}</strong>
+                  {": Le immagini dimostrative e i collegamenti presenti nelle schede degli elementi sono tratti da "}
+                  <a
+                    href="https://it.wikipedia.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-300 hover:underline inline-flex items-center gap-1"
+                  >
+                    it.wikipedia.org <FontAwesomeIcon icon={faUpRightFromSquare} className="text-[9px]" />
+                  </a>
+                  {"."}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Sezione Disclaimer Legale */}
