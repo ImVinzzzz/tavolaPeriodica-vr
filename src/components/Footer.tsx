@@ -97,7 +97,7 @@ const Footer: FC<FooterProps> = ({ onOpenReadme }) => {
                 className="inline-flex items-center gap-2 text-xs font-semibold text-sky-300 hover:text-sky-200 transition-colors bg-sky-500/10 hover:bg-sky-500/20 border border-sky-400/30 px-3 py-1.5 rounded-lg active:scale-95"
               >
                 <FontAwesomeIcon icon={faBookOpen} className="text-sky-400 text-xs" />
-                <span>{"Consulta estratto README.md"}</span>
+                <span>{"Documentazione e Note"}</span>
               </button>
             </div>
           </div>
