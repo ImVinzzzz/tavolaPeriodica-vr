@@ -9,6 +9,7 @@ import PeriodicTable from "./components/PeriodicTable";
 import ElementModal from "./components/ElementModal";
 import Legend from "./components/Legend";
 import QuizModal from "./components/QuizModal";
+import ReadmeModal from "./components/ReadmeModal";
 import Footer from "./components/Footer";
 
 const App: FC = () => {
@@ -17,6 +18,7 @@ const App: FC = () => {
   const [mode, setMode] = useState<VisualizationMode>("category");
   const [selected, setSelected] = useState<ElementData | null>(null);
   const [isQuizOpen, setIsQuizOpen] = useState<boolean>(false);
+  const [isReadmeOpen, setIsReadmeOpen] = useState<boolean>(false);
 
   const matches = useCallback(
     (el: ElementData): boolean => {
@@ -118,7 +120,7 @@ const App: FC = () => {
       </main>
 
       {/* Footer con Fonti e Disclaimer */}
-      <Footer />
+      <Footer onOpenReadme={() => setIsReadmeOpen(true)} />
 
       {/* Modale Dettaglio Elemento */}
       <ElementModal element={selected} onClose={() => setSelected(null)} />
@@ -129,8 +131,15 @@ const App: FC = () => {
         onClose={() => setIsQuizOpen(false)}
         elements={elementsData}
       />
+
+      {/* Modale Documentazione README */}
+      <ReadmeModal
+        isOpen={isReadmeOpen}
+        onClose={() => setIsReadmeOpen(false)}
+      />
     </div>
   );
 };
 
 export default App;
+
