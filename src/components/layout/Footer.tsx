@@ -1,0 +1,1 @@
+export function Footer() { return <footer className="mx-auto max-w-6xl px-4 py-8 text-center text-xs text-slate-400/70">Dati di riferimento: IUPAC/CIAAW e NIST ASD. Le proprietà non disponibili o non criticamente valutate non vengono presentate come valori certi.</footer>; }
