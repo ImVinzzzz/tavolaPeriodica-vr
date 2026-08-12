@@ -12,10 +12,14 @@ interface PeriodicTableProps {
 
 const GROUPS = Array.from({ length: 18 }, (_, i) => i + 1);
 const PERIODS = Array.from({ length: 7 }, (_, i) => i + 1);
-const LANTHANIDE_RANGE = [57, 71];
-const ACTINIDE_RANGE = [89, 103];
+// Lantanoidi staccati: da 57 (La) a 70 (Yb) (14 elementi); Lu (71) sta nel Gruppo 3 Periodo 6
+// Attinoidi staccati: da 89 (Ac) a 102 (No) (14 elementi); Lr (103) sta nel Gruppo 3 Periodo 7
+const LANTHANIDE_SERIES_RANGE = [57, 70];
+const ACTINIDE_SERIES_RANGE = [89, 102];
 
-const gridTemplateColumns = "2.25rem repeat(18, minmax(2.25rem, 1fr)) 2.25rem";
+// Template colonne: Periodo (2.25rem) | Gr.1 | Gr.2 | Separatore (1.125rem) | Gr.3..18 | Periodo (2.25rem)
+const gridTemplateColumns =
+  "2.25rem minmax(2.25rem, 1fr) minmax(2.25rem, 1fr) minmax(1.125rem, 0.5fr) repeat(16, minmax(2.25rem, 1fr)) 2.25rem";
 
 const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSelect }) => {
   const range = useMemo(() => computeRange(elements, mode), [elements, mode]);
@@ -26,31 +30,42 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
     const actinidesList: ElementData[] = [];
 
     for (const el of elements) {
-      const inLa = el.number >= LANTHANIDE_RANGE[0] && el.number <= LANTHANIDE_RANGE[1];
-      const inAc = el.number >= ACTINIDE_RANGE[0] && el.number <= ACTINIDE_RANGE[1];
-      if (inLa) {
+      const inLaSeries = el.number >= LANTHANIDE_SERIES_RANGE[0] && el.number <= LANTHANIDE_SERIES_RANGE[1];
+      const inAcSeries = el.number >= ACTINIDE_SERIES_RANGE[0] && el.number <= ACTINIDE_SERIES_RANGE[1];
+
+      if (inLaSeries) {
         lanthanidesList.push(el);
         continue;
       }
-      if (inAc) {
+      if (inAcSeries) {
         actinidesList.push(el);
         continue;
       }
+
+      // Elementi normali + Lu (71) e Lr (103) posizionati in base a period e group
       byPositionMap.set(el.period + "-" + el.group, el);
     }
+
     lanthanidesList.sort((a, b) => a.number - b.number);
     actinidesList.sort((a, b) => a.number - b.number);
+
     return { byPosition: byPositionMap, lanthanides: lanthanidesList, actinides: actinidesList };
   }, [elements]);
 
   return (
     <div className="w-full overflow-x-auto pb-4">
       <div className="min-w-[1100px]">
-        {/* Griglia principale 18x7 con etichette di gruppo e periodo */}
+        {/* Griglia principale con separatore tra Gruppo 2 e Gruppo 3 */}
         <div className="grid gap-1" style={{ gridTemplateColumns }}>
           {/* Riga intestazione gruppi */}
           <div />
-          {GROUPS.map((g) => (
+          {/* Gruppo 1 e 2 */}
+          <div className="text-center text-[10px] sm:text-xs text-sky-300/80 font-semibold pb-1">1</div>
+          <div className="text-center text-[10px] sm:text-xs text-sky-300/80 font-semibold pb-1">2</div>
+          {/* Spazio sopra il separatore */}
+          <div />
+          {/* Gruppi 3..18 */}
+          {GROUPS.slice(2).map((g) => (
             <div
               key={"g-" + g}
               className="text-center text-[10px] sm:text-xs text-sky-300/80 font-semibold pb-1"
@@ -60,39 +75,16 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
           ))}
           <div />
 
+          {/* Righe dei periodi (1..7) */}
           {PERIODS.map((p) => (
             <Fragment key={"row-" + p}>
+              {/* Etichetta periodo sinistra */}
               <div className="flex items-center justify-center text-[10px] sm:text-xs text-sky-300/80 font-semibold">
                 {p}
               </div>
 
-              {GROUPS.map((g) => {
-                if (p === 6 && g === 3) {
-                  return (
-                    <ElementCell
-                      key={p + "-" + g}
-                      element={lanthanides[0]}
-                      placeholder="lanthanide"
-                      mode={mode}
-                      range={range}
-                      dimmed={false}
-                      onSelect={onSelect}
-                    />
-                  );
-                }
-                if (p === 7 && g === 3) {
-                  return (
-                    <ElementCell
-                      key={p + "-" + g}
-                      element={actinides[0]}
-                      placeholder="actinide"
-                      mode={mode}
-                      range={range}
-                      dimmed={false}
-                      onSelect={onSelect}
-                    />
-                  );
-                }
+              {/* Gruppo 1 e 2 */}
+              {[1, 2].map((g) => {
                 const el = byPosition.get(p + "-" + g);
                 if (!el) return <div key={p + "-" + g} />;
                 return (
@@ -107,6 +99,36 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
                 );
               })}
 
+              {/* Colonna Separatore tra Gruppo 2 e 3 */}
+              {p === 6 ? (
+                <div className="aspect-square border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/50 text-xs font-bold select-none">
+                  *
+                </div>
+              ) : p === 7 ? (
+                <div className="aspect-square border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/50 text-xs font-bold select-none">
+                  **
+                </div>
+              ) : (
+                <div />
+              )}
+
+              {/* Gruppi 3..18 */}
+              {GROUPS.slice(2).map((g) => {
+                const el = byPosition.get(p + "-" + g);
+                if (!el) return <div key={p + "-" + g} />;
+                return (
+                  <ElementCell
+                    key={p + "-" + g}
+                    element={el}
+                    mode={mode}
+                    range={range}
+                    dimmed={!matches(el)}
+                    onSelect={onSelect}
+                  />
+                );
+              })}
+
+              {/* Etichetta periodo destra */}
               <div className="flex items-center justify-center text-[10px] sm:text-xs text-sky-300/80 font-semibold">
                 {p}
               </div>
@@ -114,12 +136,15 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
           ))}
         </div>
 
-        {/* Serie staccate: Lantanoidi e Attinoidi allineate al Gruppo 3 */}
+        {/* Serie staccate: Lantanoidi (57-70) ed Attinoidi (89-102) */}
         <div className="mt-3 grid gap-1" style={{ gridTemplateColumns }}>
-          <div className="flex items-center justify-center text-[10px] sm:text-xs text-pink-300/80 font-semibold">
-            {"*"}
-          </div>
+          <div />
+          {/* Spazio per Gruppo 1 e 2 */}
           <div className="col-span-2" />
+          {/* Segnaposto * colonna separatore */}
+          <div className="flex items-center justify-center text-[10px] sm:text-xs text-pink-300/80 font-semibold">
+            *
+          </div>
           {lanthanides.map((el) => (
             <ElementCell
               key={el.number}
@@ -130,14 +155,18 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
               onSelect={onSelect}
             />
           ))}
-          <div className="col-span-1" />
+          {/* Spazio vuoto rimanente (col-span-2 per coprire gli ultimi due gruppi e l'etichetta) */}
+          <div className="col-span-3" />
         </div>
 
         <div className="mt-1 grid gap-1" style={{ gridTemplateColumns }}>
-          <div className="flex items-center justify-center text-[10px] sm:text-xs text-pink-400/80 font-semibold">
-            {"**"}
-          </div>
+          <div />
+          {/* Spazio per Gruppo 1 e 2 */}
           <div className="col-span-2" />
+          {/* Segnaposto ** colonna separatore */}
+          <div className="flex items-center justify-center text-[10px] sm:text-xs text-pink-400/80 font-semibold">
+            **
+          </div>
           {actinides.map((el) => (
             <ElementCell
               key={el.number}
@@ -148,7 +177,8 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
               onSelect={onSelect}
             />
           ))}
-          <div className="col-span-1" />
+          {/* Spazio vuoto rimanente */}
+          <div className="col-span-3" />
         </div>
       </div>
     </div>
