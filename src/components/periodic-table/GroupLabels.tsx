@@ -1,1 +1,0 @@
-export function GroupLabels() { return <div className="grid grid-cols-18 gap-1 px-7 text-center text-[10px] font-medium text-slate-400/75 sm:gap-1.5 sm:px-9 sm:text-xs">{Array.from({length:18},(_,i)=><span key={i}>{i+1}</span>)}</div>; }

@@ -1,1 +1,0 @@
-export function PeriodLabels() { return <div className="grid grid-rows-7 gap-1 pt-1 text-center text-[10px] font-medium text-slate-400/75 sm:gap-1.5 sm:text-xs">{Array.from({length:7},(_,i)=><span key={i} className="flex items-center justify-center">{i+1}</span>)}</div>; }

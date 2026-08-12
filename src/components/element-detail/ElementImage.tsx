@@ -1,2 +1,0 @@
-import type { ElementData } from '../../types/element';
-export function ElementImage({element}: {element: ElementData}) { return element.image ? <img src={element.image} alt={`Rappresentazione di ${element.name}`} className="h-full w-full object-cover" /> : <div className="flex h-full min-h-44 items-center justify-center bg-[radial-gradient(circle_at_center,rgba(103,232,249,.13),transparent_55%)]"><span className="text-7xl font-semibold text-white/10">{element.symbol}</span></div>; }
