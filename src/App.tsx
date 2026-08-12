@@ -9,6 +9,7 @@ import PeriodicTable from "./components/PeriodicTable";
 import ElementModal from "./components/ElementModal";
 import Legend from "./components/Legend";
 import QuizModal from "./components/QuizModal";
+import Footer from "./components/Footer";
 
 const App: FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -115,6 +116,9 @@ const App: FC = () => {
           </div>
         </div>
       </main>
+
+      {/* Footer con Fonti e Disclaimer */}
+      <Footer />
 
       {/* Modale Dettaglio Elemento */}
       <ElementModal element={selected} onClose={() => setSelected(null)} />
