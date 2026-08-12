@@ -73,7 +73,7 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                   {"Documentazione del Progetto"}
                 </h2>
                 <p className="text-xs text-white/60 mt-0.5">
-                  {"Estratto informativo sintetico dal file README.md principale"}
+                  {"Nota informativa sintetica."}
                 </p>
               </div>
             </div>
