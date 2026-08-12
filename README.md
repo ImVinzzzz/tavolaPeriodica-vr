@@ -107,6 +107,12 @@ src/
 └── main.tsx             # Entry point dell'applicazione React
 ```
 
+## ⚖️ Disclaimer e Note Legali
+
+- **Carattere del Sito**: Sito amatoriale sviluppato a scopo puramente didattico e divulgativo, senza fini di lucro.
+- **Copyright e Marchi**: Non si intende infrangere alcun diritto di autore o copyright. Tutti i marchi registrati, marchi di fabbrica e nomi di prodotti citati appartengono ai legittimi proprietari.
+- **Immagini e Contenuti**: Le immagini dimostrative e le risorse contenute nelle schede informative degli elementi provengono da [it.wikipedia.org](https://it.wikipedia.org/) e restano di proprietà dei rispettivi autori sotto le relative licenze Creative Commons o di Pubblico Dominio.
+
 ---
 
 ## 📄 Licenza
