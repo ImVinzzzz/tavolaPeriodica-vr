@@ -2,16 +2,16 @@ import type { CategoryType, ElementData, VisualizationMode } from "../types/elem
 
 /** Colore associato a ciascuna categoria chimica, come da schema richiesto. */
 export const CATEGORY_COLORS: Record<CategoryType, string> = {
-  "Metalli alcalini": "#9e4744",
-  "Metalli alcalino terrosi": "#b86b35",
-  Lantanoidi: "#af587e",
-  Attinoidi: "#853856",
-  "Elementi di transizione": "#7765a3",
-  "Metalli del blocco p": "#606f7b",
-  Semimetalli: "#8a5d3b",
-  "Non metalli": "#3b7a57",
-  Alogeni: "#a38438",
-  "Gas nobili": "#3b7097",
+  "Metalli alcalini": "#b85252",
+  "Metalli alcalino terrosi": "#b37e34",
+  Lantanoidi: "#9a5d8f",
+  Attinoidi: "#75426b",
+  "Elementi di transizione": "#6b5c87",
+  "Metalli del blocco p": "#686d80",
+  Semimetalli: "#878044",
+  "Non metalli": "#3e7c58",
+  Alogeni: "#9c8942",
+  "Gas nobili": "#3d7d9e",
 };
 
 export const CATEGORY_ORDER: CategoryType[] = [
@@ -57,14 +57,14 @@ export function getNumericValue(el: ElementData, mode: VisualizationMode): numbe
 
 /** Interpola tra azzurro avio (min) e rosso opaco (max), passando per l'ocra. */
 export function heatColor(value: number, min: number, max: number): string {
-  if (max === min) return "rgb(59, 112, 151)";
+  if (max === min) return "rgb(61, 125, 158)";
   const t = Math.min(1, Math.max(0, (value - min) / (max - min)));
 
-  // Stops: azzurro pastello scuro -> ocra pastello scuro -> rosso pastello scuro
+  // Stops: azzurro avio -> ocra -> rosso opaco
   const stops: [number, number, number][] = [
-    [59, 112, 151],
-    [163, 132, 56],
-    [158, 71, 68],
+    [61, 125, 158],
+    [156, 137, 66],
+    [184, 82, 82],
   ];
 
   const scaled = t * (stops.length - 1);

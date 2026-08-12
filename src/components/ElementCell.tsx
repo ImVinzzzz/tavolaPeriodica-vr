@@ -62,11 +62,11 @@ const ElementCell: FC<ElementCellProps> = ({
       title={element.name + " (" + element.symbol + ")"}
     >
       <div
-        className="relative h-full w-full rounded-md flex flex-col justify-between overflow-hidden backdrop-blur-sm px-1 py-0.5"
+        className="relative h-full w-full rounded-md flex flex-col justify-between overflow-hidden px-1 py-0.5"
         style={{
-          backgroundColor: color + "45",
+          backgroundColor: color,
           boxShadow: dimmed ? "none" : "0 1px 3px rgba(0, 0, 0, 0.4)",
-          border: "1px solid " + color + "88",
+          border: "1px solid " + (isCategoryMode ? "rgba(255, 255, 255, 0.15)" : color),
         }}
       >
         <div className="flex items-start justify-between text-[10px] sm:text-xs leading-none">
