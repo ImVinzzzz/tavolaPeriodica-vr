@@ -64,9 +64,9 @@ const ElementCell: FC<ElementCellProps> = ({
       <div
         className="relative h-full w-full rounded-md flex flex-col justify-between overflow-hidden backdrop-blur-sm px-1 py-0.5"
         style={{
-          backgroundColor: color + "55",
-          boxShadow: dimmed ? "none" : "0 0 10px 1px " + color + "80, inset 0 0 12px " + color + "40",
-          border: "1px solid " + color + "aa",
+          backgroundColor: color + "45",
+          boxShadow: dimmed ? "none" : "0 1px 3px rgba(0, 0, 0, 0.4)",
+          border: "1px solid " + color + "88",
         }}
       >
         <div className="flex items-start justify-between text-[10px] sm:text-xs leading-none">

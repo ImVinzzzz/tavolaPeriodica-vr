@@ -36,7 +36,7 @@ const Legend: React.FC<LegendProps> = ({ elements, mode }) => {
         <div
           className="w-32 sm:w-48 h-2.5 rounded-full border border-white/20"
           style={{
-            background: "linear-gradient(90deg, rgb(56,189,248), rgb(250,204,21), rgb(239,68,68))",
+            background: "linear-gradient(90deg, rgb(59, 112, 151), rgb(163, 132, 56), rgb(158, 71, 68))",
           }}
         />
         <span className="text-[11px] text-red-300 font-mono">

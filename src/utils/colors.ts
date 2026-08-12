@@ -2,16 +2,16 @@ import type { CategoryType, ElementData, VisualizationMode } from "../types/elem
 
 /** Colore associato a ciascuna categoria chimica, come da schema richiesto. */
 export const CATEGORY_COLORS: Record<CategoryType, string> = {
-  "Metalli alcalini": "#ef4444",
-  "Metalli alcalino terrosi": "#f97316",
-  Lantanoidi: "#ec4899",
-  Attinoidi: "#be185d",
-  "Elementi di transizione": "#c084fc",
-  "Metalli del blocco p": "#9ca3af",
-  Semimetalli: "#b45309",
-  "Non metalli": "#22c55e",
-  Alogeni: "#eab308",
-  "Gas nobili": "#38bdf8",
+  "Metalli alcalini": "#9e4744",
+  "Metalli alcalino terrosi": "#b86b35",
+  Lantanoidi: "#af587e",
+  Attinoidi: "#853856",
+  "Elementi di transizione": "#7765a3",
+  "Metalli del blocco p": "#606f7b",
+  Semimetalli: "#8a5d3b",
+  "Non metalli": "#3b7a57",
+  Alogeni: "#a38438",
+  "Gas nobili": "#3b7097",
 };
 
 export const CATEGORY_ORDER: CategoryType[] = [
@@ -55,16 +55,16 @@ export function getNumericValue(el: ElementData, mode: VisualizationMode): numbe
   }
 }
 
-/** Interpola tra azzurro freddo (min) e rosso caldo (max), passando per il giallo. */
+/** Interpola tra azzurro avio (min) e rosso opaco (max), passando per l'ocra. */
 export function heatColor(value: number, min: number, max: number): string {
-  if (max === min) return "rgb(56, 189, 248)";
+  if (max === min) return "rgb(59, 112, 151)";
   const t = Math.min(1, Math.max(0, (value - min) / (max - min)));
 
-  // Stops: azzurro (freddo) -> giallo (medio) -> rosso (caldo)
+  // Stops: azzurro pastello scuro -> ocra pastello scuro -> rosso pastello scuro
   const stops: [number, number, number][] = [
-    [56, 189, 248], // sky-400
-    [250, 204, 21], // yellow-400
-    [239, 68, 68], // red-500
+    [59, 112, 151],
+    [163, 132, 56],
+    [158, 71, 68],
   ];
 
   const scaled = t * (stops.length - 1);
@@ -75,7 +75,7 @@ export function heatColor(value: number, min: number, max: number): string {
   const r = Math.round(r1 + (r2 - r1) * localT);
   const g = Math.round(g1 + (g2 - g1) * localT);
   const b = Math.round(b1 + (b2 - b1) * localT);
-  return `rgb(${r}, ${g}, ${b})`;
+  return "rgb(" + r + ", " + g + ", " + b + ")";
 }
 
 /** Calcola il colore di una casella per la modalità di visualizzazione corrente. */
