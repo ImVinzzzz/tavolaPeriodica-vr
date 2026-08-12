@@ -101,11 +101,11 @@ const PeriodicTable: FC<PeriodicTableProps> = ({ elements, mode, matches, onSele
 
               {/* Colonna Separatore tra Gruppo 2 e 3 */}
               {p === 6 ? (
-                <div className="aspect-square border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/50 text-xs font-bold select-none">
+                <div className="h-full border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/50 text-xs font-bold select-none">
                   *
                 </div>
               ) : p === 7 ? (
-                <div className="aspect-square border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/50 text-xs font-bold select-none">
+                <div className="h-full border-2 border-dashed border-white/30 rounded-lg flex items-center justify-center text-white/50 text-xs font-bold select-none">
                   **
                 </div>
               ) : (
