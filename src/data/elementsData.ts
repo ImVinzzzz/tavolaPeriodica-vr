@@ -33,7 +33,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: H-1.",
     wikiUrl: "https://it.wikipedia.org/wiki/Idrogeno",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Hydrogenglow.jpg/250px-Hydrogenglow.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Hydrogenglow.jpg",
   },
   {
     number: 2,
@@ -54,7 +54,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: He-4.",
     wikiUrl: "https://it.wikipedia.org/wiki/Elio",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=He",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/00/Helium-glow.jpg",
   },
   {
     number: 3,
@@ -75,7 +75,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: Li-7.",
     wikiUrl: "https://it.wikipedia.org/wiki/Litio",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=Li",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Lithium_paraffin.jpg",
   },
   {
     number: 4,
@@ -96,7 +96,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: Be-9.",
     wikiUrl: "https://it.wikipedia.org/wiki/Berillio",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=Be",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Be-140g.jpg",
   },
   {
     number: 5,
@@ -117,7 +117,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: B-11.",
     wikiUrl: "https://it.wikipedia.org/wiki/Boro",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=B",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Boron_mNACTEC.jpg",
   },
   {
     number: 6,
@@ -138,7 +138,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: C-12.",
     wikiUrl: "https://it.wikipedia.org/wiki/Carbonio",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=C",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Diamond_and_graphite_without_structures.jpg",
   },
   {
     number: 7,
@@ -159,7 +159,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: N-14.",
     wikiUrl: "https://it.wikipedia.org/wiki/Azoto",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=N",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f5/Fluessiger_Stickstoff.jpg",
   },
   {
     number: 8,
@@ -180,7 +180,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: O-16.",
     wikiUrl: "https://it.wikipedia.org/wiki/Ossigeno",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=O",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Hydrogenglow.jpg",
   },
   {
     number: 9,
@@ -201,7 +201,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: F-19.",
     wikiUrl: "https://it.wikipedia.org/wiki/Fluoro",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=F",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/91/Liquid_fluorine_tighter_crop.jpg",
   },
   {
     number: 10,
@@ -222,7 +222,7 @@ export const elementsData: ElementData[] = [
     isRadioactive: false,
     isotopesNote: "Isotopo più abbondante in natura: Ne-20.",
     wikiUrl: "https://it.wikipedia.org/wiki/Neon",
-    imageUrl: "https://placehold.co/300x300/0f172a/38bdf8?text=Ne",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Neon-glow.jpg",
   },
   {
     number: 11,
