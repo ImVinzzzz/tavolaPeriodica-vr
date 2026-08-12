@@ -557,7 +557,7 @@ const QuizModal: FC<QuizModalProps> = ({ isOpen, onClose, elements }) => {
               {mode === "find_on_table" && (
                 <div className="flex flex-col items-center gap-1">
                   <span className="text-3xl font-extrabold text-white">
-                    {currentElement.name + " (" + currentElement.symbol + ")"}
+                    {currentElement.name}
                   </span>
                   <span className="text-xs text-slate-400">
                     {"Numero atomico " + currentElement.number + " · Categoria: " + currentElement.category}
