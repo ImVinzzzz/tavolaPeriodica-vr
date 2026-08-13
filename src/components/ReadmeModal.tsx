@@ -87,14 +87,14 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                   <span>{"Tavola Periodica Interattiva"}</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-white/70">
-                  {"Un'applicazione web moderna, reattiva e scientificamente accurata per l'esplorazione degli elementi della tavola periodica, sviluppata con React 18, TypeScript, Vite e TailwindCSS."}
+                  {"Un'applicazione web scientificamente accurata per l'esplorazione degli elementi della tavola periodica, sviluppata con React 18, TypeScript, Vite e TailwindCSS."}
                 </p>
               </div>
 
               {/* Sezione Funzionalità Principali */}
               <div className="flex flex-col gap-3">
                 <h3 className="text-sm font-bold text-sky-300 uppercase tracking-wider">
-                  {"Funzionalita Principali"}
+                  {"Funzionalità Principali"}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3.5 flex items-start gap-2.5">
@@ -110,9 +110,9 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                   <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3.5 flex items-start gap-2.5">
                     <FontAwesomeIcon icon={faCheck} className="text-sky-400 text-xs mt-1 shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-xs text-white">{"Modalita Heatmap"}</h4>
+                      <h4 className="font-semibold text-xs text-white">{"Modalità Heatmap"}</h4>
                       <p className="text-[11px] text-white/60 mt-0.5">
-                        {"Mappe di calore cromatiche per raggio atomico, densita, anno e proprieta atomiche."}
+                        {"Mappe di calore cromatiche per raggio atomico, densità, anno e proprietà atomiche."}
                       </p>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                     <div>
                       <h4 className="font-semibold text-xs text-white">{"Quiz Educativo Interattivo"}</h4>
                       <p className="text-[11px] text-white/60 mt-0.5">
-                        {"4 modalita di gioco, 3 livelli di difficolta, supporto timer e salvataggio dei record."}
+                        {"4 modalità di gioco, 3 livelli di difficoltà, supporto timer e salvataggio dei record."}
                       </p>
                     </div>
                   </div>
@@ -146,20 +146,20 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                   <span>{"Accuratezza Scientifica e Fonti dei Dati"}</span>
                 </h3>
                 <p className="text-xs text-white/70">
-                  {"Il dataset dell'applicazione e costantemente validato e aggiornato a partire dalle fonti ufficiali della chimica mondiale:"}
+                  {"Il dataset dell'applicazione è costantemente validato e aggiornato a partire dalle fonti ufficiali della chimica mondiale:"}
                 </p>
                 <div className="flex flex-col gap-2 bg-white/[0.02] border border-white/5 rounded-xl p-4 text-xs">
                   <div>
                     <strong className="text-white">{"IUPAC / CIAAW"}</strong>
                     <span className="text-white/60">
-                      {": Pesi atomici standard convenzionali e mono-isotopici accurati. Per gli elementi radioattivi privi di isotopi stabili, il valore e racchiuso tra parentesi quadre [...] e rappresenta il numero di massa dell'isotopo piu stabile."}
+                      {": Pesi atomici standard convenzionali e mono-isotopici accurati. Per gli elementi radioattivi privi di isotopi stabili, il valore è racchiuso tra parentesi quadre [...] e rappresenta il numero di massa dell'isotopo più stabile."}
                     </span>
                   </div>
                   <div className="h-px bg-white/5 my-1" />
                   <div>
                     <strong className="text-white">{"NIST ASD (Atomic Spectra Database)"}</strong>
                     <span className="text-white/60">
-                      {": Energie di ionizzazione e configurazioni elettroniche verificate. Per le proprieta non ancora misurate sperimentalmente, il dato e presentato come N/D anziche forzare stime teoriche."}
+                      {": Energie di ionizzazione e configurazioni elettroniche verificate. Per le proprietà non ancora misurate sperimentalmente, il dato è presentato come N/D anziché mostrare stime teoriche."}
                     </span>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                 <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
                   <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wide mb-1.5 flex items-center gap-1.5">
                     <FontAwesomeIcon icon={faShieldHalved} className="text-amber-400" />
-                    <span>{"Disclaimer Legale"}</span>
+                    <span>{"Disclaimer"}</span>
                   </h4>
                   <p className="text-[11px] text-amber-200/80 leading-relaxed">
                     {"Sito amatoriale a carattere puramente didattico e divulgativo, senza fini di lucro. Non si intende infrangere alcun copyright. Marchi ed immagini appartengono ai rispettivi proprietari."}
@@ -183,7 +183,7 @@ const ReadmeModal: FC<ReadmeModalProps> = ({ isOpen, onClose }) => {
                     <span>{"Licenza di Distribuzione"}</span>
                   </h4>
                   <p className="text-[11px] text-indigo-200/80 leading-relaxed">
-                    {"Questo progetto e distribuito con licenza Open Source MIT, per promuovere la libera diffusione della conoscenza scientifica."}
+                    {"Questo progetto è distribuito con licenza Open Source MIT, per promuovere la libera diffusione della conoscenza scientifica."}
                   </p>
                 </div>
               </div>
